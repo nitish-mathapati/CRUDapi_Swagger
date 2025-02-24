@@ -59,11 +59,15 @@ app.get('/city/getcitybyname/:city_name', async function(req,res) {
 // Update by name
 app.put('/city/updatecitybyname/:city_name',async function (req,res) {
     const cityName = req.params.city_name;
-    const {newcity, newpin} = req.body;
+    const newcity = req.body.city_name;
+    const newpin = req.body.pincode;
+    // console.log(newcity);
     try {
         await city.updateOne({city_name:cityName},{$set:{city_name:newcity, pincode:newpin}});
+        // const city_name = newcity;
+
         const data = await city.find({city_name:newcity});
-        return res.status(200).send({data});
+        return res.status(200).json({data:data});
 
     } catch (error) {
         res.send("Error in database to update");

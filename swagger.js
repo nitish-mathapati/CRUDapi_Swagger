@@ -20,10 +20,10 @@ const options = {
         },
         servers:[
             {
-            url:"http://localhost:4000/api_docs"
+            url:"http://localhost:4000"
             },
             {
-            url:"http://localhost:3000/api_docs" 
+            url:"http://localhost:3000" 
             }
         ],
         tags:[
@@ -58,8 +58,17 @@ const options = {
                             content: {
                                 'application/json':{
                                     schema:{
-                                        type:String,
-                                        example: "Hey hi..! welcome to my server"
+                                        type:'string',
+                                        // example: "Hey hi..! welcome to my server"
+                                    }
+                                }
+                            }
+                        },
+                        '400':{
+                            content:{
+                                'application/json':{
+                                    schema:{
+                                        type: 'string'
                                     }
                                 }
                             }
@@ -126,13 +135,13 @@ const options = {
                                         type: "object",
                                         properties: {
                                             data: {
-                                                type: Array,
+                                                type: 'array',
                                                 items: {
                                                     $ref: "#/components/schemas/cities"
                                                 }
                                             },
                                             message: {
-                                                type: String,
+                                                type: 'string',
                                                 example: "All city details"
                                             }
                                         }
@@ -160,7 +169,7 @@ const options = {
                         description: "Name of city to return",
                         required:true,
                         schema:{
-                            type:Number
+                            $ref :"#/components/schemas/cities/properties/city_name"
                         }
                     }],
                     responses:{
@@ -192,10 +201,77 @@ const options = {
                 }
             },
             '/city/updatecitybyname/{city_name}':{
-
+                put:{
+                    tags:["Cities"],
+                    summary: "Update by city",
+                    description: "Updates the details of present city",
+                    parameters: [{
+                        name: "city_name",
+                        in: "path",
+                        description: "Update the city and pincode to update",
+                        required:true,
+                        schema:{
+                            $ref: "#/components/schemas/cities/properties/city_name"
+                        }
+                    }],
+                    requestBody:{
+                        description: "Add a new city to the database through swaggerAPI",
+                        content:{
+                            'application/json':{
+                                schema:{
+                                    $ref: "#/components/schemas/cities"
+                                }
+                            }
+                        },
+                        required:true
+                    },
+                    responses:{
+                        '200':{
+                            description: "Successful Operation",
+                            content: {
+                                'application/json':{
+                                    schema:{
+                                        $ref: "#/components/schemas/cities"
+                                    }
+                                }
+                            }
+                        },
+                        '400':{
+                            description: "City not found"
+                        }
+                    }
+                }
             },
             '/city/deletebyname/{city_name}':{
-
+                delete:{
+                    tags:["Cities"],
+                    summary: "Delete City",
+                    description: "Delete the city by its name",
+                    parameters: [{
+                        name: "city_name",
+                        in: "path",
+                        description: "Update the city and pincode to update",
+                        required:true,
+                        schema:{
+                            $ref: "#/components/schemas/cities/properties/city_name"
+                        }
+                    }],
+                    responses:{
+                        '200':{
+                            description: "Successful Operation",
+                            content: {
+                                'application/json':{
+                                    schema:{
+                                        $ref: "#/components/schemas/cities"
+                                    }
+                                }
+                            }
+                        },
+                        '400':{
+                            description: "City not found"
+                        }
+                    }
+                }
             }
         },
         components:{
@@ -208,15 +284,15 @@ const options = {
                     type: "object",             
                     properties:{
                         city_name:{
-                            type:String,
+                            type:'string',
                             example:"Kalaburgi"
                         },
                         state:{
-                            type:String,
+                            type:'string',
                             example:"Karnataka"
                         },
                         pincode:{
-                            type:Number,
+                            type:'number',
                             example:585105
                         }
                     }
@@ -229,19 +305,19 @@ const options = {
                     type: "object",
                     properties:{
                         company:{
-                            type:String,
+                            type:'string',
                             example:"Koenigsegg"
                         },
                         category:{
-                            type:String,
+                            type:'string',
                             example:"Sedan"
                         },
                         model:{
-                            type:String,
+                            type:'string',
                             example:"Koenigsegg CC850"
                         },
                         fuel_type:{
-                            type:String,
+                            type:'string',
                             example:"Hybrid"
                         }
                     },
