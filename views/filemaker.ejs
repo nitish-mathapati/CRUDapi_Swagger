@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <h1>Form Submission</h1>
+    <form method="get" action="/create-file">
+        <div>
+            <h3>file name</h3>
+            <input type="text" id="file_name" name="file_name" required>
+        </div>
+        <div>
+            <h3>file content</h3>
+            <input type="text" id="content" name="content" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="/script.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>

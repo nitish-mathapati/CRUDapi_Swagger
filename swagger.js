@@ -1,6 +1,6 @@
 const {SchemaTypes, SchemaTypeOptions, version} = require('mongoose');
 const swaggerJsDoc = require('swagger-jsdoc');
-const schema = require('./schema');
+const schema = require('./schema/schema');
 
 const options = {
     definition: {
@@ -42,6 +42,17 @@ const options = {
                     description: "Cars",
                     url: "https://www.netcarshow.com/"
                 }
+            }
+        ],
+        security:[
+            {
+                api_key:[]
+            },
+            {
+                Swagger_auth:[
+                    'write:cities',
+                    'read:cities'
+                ]
             }
         ],
         paths:{
@@ -187,17 +198,6 @@ const options = {
                             description: "City not found"
                         }
                     },
-                    security:[
-                        {
-                            api_key:[]
-                        },
-                        {
-                            Swagger_auth:[
-                                'write:cities',
-                                'read:cities'
-                            ]
-                        }
-                    ]
                 }
             },
             '/city/updatecitybyname/{city_name}':{

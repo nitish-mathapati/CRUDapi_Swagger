@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <h1>Form Submission</h1>
+    <form method="post" action="/city/addcity">
+        <div>
+            <h3>city name</h3>
+            <input type="text" id="name" name="city_name" required>
+        </div>
+        <div>
+            <h3>city state</h3>
+            <input type="text" id="email" name="state" required>
+        </div>
+        <div>
+            <h3>city pincode</h3>
+            <input type="text" id="password" name="pincode" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="/script.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>
