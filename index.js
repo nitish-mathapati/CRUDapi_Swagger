@@ -50,7 +50,7 @@ app.get('/', (req,res)=>{
     res.render('index');
 })
 
-app.post('/create', (req,res)=>{
+app.post('/signIN', (req,res)=>{
 
     // Method 1
     // const data = req.body;
