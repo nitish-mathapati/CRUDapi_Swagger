@@ -1,14 +1,38 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Example</title>
-    <link rel="stylesheet" href="/styles.css"> <!-- Link to CSS file -->
+    <link rel="stylesheet" href="/styles.css"> // Link to CSS file 
+    
 </head>
 <body>
     <h1>hey home</h1>
 
-    <script src="/script.js"></script> <!-- Link to JavaScript file -->
+    <script src="/script.js"></script> // Link to JavaScript file 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="container w-full h-screen bg-zinc-900 text-black p-10">
+        <div class="box">
+            <h2>Welcome</h2>
+            <p>Please choose an option:</p>
+            <div class="button-group">
+                <a href="/login" class="button">Login</a>
+                <a href="/signup" class="button">Sign In</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

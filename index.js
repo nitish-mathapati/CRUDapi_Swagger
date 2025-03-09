@@ -47,10 +47,14 @@ app.use((req,res,next)=>{
 
 // Creating login-logout 
 app.get('/', (req,res)=>{
-    res.render('index');
+    res.render('home');
 })
 
-app.post('/signIN', (req,res)=>{
+app.get('/signup',(req,res)=>{
+    res.render('signup');
+})
+
+app.post('/signup', (req,res)=>{
 
     // Method 1
     // const data = req.body;
@@ -73,7 +77,8 @@ app.post('/signIN', (req,res)=>{
             const token = jwt.sign({email}, "balleballe");
             res.cookie("token",token);
         
-            res.send(createdUser);
+            // res.send(createdUser);
+            res.redirect('/login');
         })
     })
 
@@ -101,7 +106,8 @@ app.post('/login',async (req,res)=>{
         if(result){
             const token = jwt.sign({email:user.email}, "balleballe");
             res.cookie("token",token);
-            res.send("Yes, you can login");
+            // res.send("Yes, you can login");
+            res.render("panel");
         }
         else res.send("Something went wrong");
     })
@@ -163,6 +169,10 @@ app.post('/city/addcity', async function (req,res) {
 });
 
 // Read all
+// app.get('/city/getcity',(req,res)=>{
+//     res.render('readcity');
+// })
+
 app.get('/city/getcity', async function (req,res) {
     try {
         const data = await city.find();
@@ -170,12 +180,13 @@ app.get('/city/getcity', async function (req,res) {
         //     data:data,
         //     message: "All cities details"
         // })
-        console.log(req.cookies);
-        res.render('allcity',{data:data});
+        // console.log(req.cookies);
+        res.render('readcity',{data:data});
     } catch (error) {
         return res.send(error);
     }
 });
+
 
 // Read by name
 app.get('/city/getcitybyname/:city_name', async function(req,res) {

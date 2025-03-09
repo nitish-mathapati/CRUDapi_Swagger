@@ -1,0 +1,65 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>all cities are</h1>
+    <div id="city-list">
+        <% data.forEach(function(city) { %>
+            <h2><%= city.city_name%></h2>
+            <p><%= city.state%></p> 
+            <p><%= city.pincode%></p>
+        <% }); %>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cities</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Cities</h1>
+    <ul>
+        <% data.forEach(city => { %>
+            <li>
+                <strong>City Name:</strong> <%= city.city_name %><br>
+                <strong>State:</strong> <%= city.state %><br>
+                <strong>Pincode:</strong> <%= city.pincode %>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cities</title>
+</head>
+<body>
+    <h1>All Cities Are</h1>
+    <div id="city-list">
+        <% if (data && data.length > 0) { %>
+            <% data.forEach(function(city) { %>
+                <h2><%= city.city_name %></h2>
+                <p><%= city.state %></p>
+                <p><%= city.pincode %></p>
+            <% }); %>
+        <% } else { %>
+            <p>No cities found.</p>
+        <% } %>
+    </div>
+</body>
+</html>
